@@ -1,0 +1,23 @@
+#!/bin/bash 
+
+
+# Usage: ./astro-add-outputs <profile> <stack-name>
+# Use this to generate the env.json required by the astro app
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+AWS_PROFILE=${1:-"default"}
+STACK_NAME=${2:-"WhyCognitoStack"}
+ENV_JSON="$DIR/astro/src/env.json"
+
+
+S3_BUCKET=$(pnpm axiom config | jq -r '.s3Bucket')
+
+aws cloudformation describe-stacks --stack-name $STACK_NAME --profile $AWS_PROFILE | \
+    jq '.Stacks | .[] | .Outputs | reduce .[] as $i ({}; .[$i.OutputKey] = $i.OutputValue)' \
+    > "$ENV_JSON"
+
+ADD_BUCKET=$(jq '. += { s3Bucket: "'$S3_BUCKET'"}' $ENV_JSON)
+echo $ADD_BUCKET > "$ENV_JSON"
+
+echo "File generated $ENV_JSON: "
+jq . $ENV_JSON

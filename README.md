@@ -1,14 +1,36 @@
-# Welcome to your CDK TypeScript project
+# Why Cognito?
 
-This is a blank project for CDK development with TypeScript.
+Purpose of this repo is to demonstrate how to get up and running with Coginto 
+using CDK and Astro (with React) as the frontend.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+Highlighting Features:
+- Lambda Authorizer with Request Context
+- User Pool as the IdP
+- User Pool triggers to add tenant id to user based on custom logic
 
-## Useful commands
+## Getting Started
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+### Install Dependencies
+```bash
+pnpm install
+```
+
+### Prep config file
+
+### Deploy
+
+```bash
+pnpm cdk deploy
+```
+
+#### Add Outputs for Astro
+
+```bash
+./astro-add-outputs <aws_profile>
+```
+
+### Run Astro
+
+```bash
+pnpm astro:dev
+```

@@ -2,6 +2,8 @@
 !jest.config.js
 *.d.ts
 node_modules
+!.axiom.example.js
+env.json
 
 # CDK asset staging directory
 .cdk.staging
