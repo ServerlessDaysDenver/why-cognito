@@ -45,3 +45,8 @@ The following command will add required outputs to make them available for astro
 ```bash
 pnpm astro:dev
 ```
+
+## Useful Resources
+- [Amplify Authenticator React Component](https://docs.amplify.aws/react/build-a-backend/auth/set-up-auth/#connect-your-application-code-to-your-auth-resource)
+- [AWS CDK Cognito](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_cognito-readme.html)
+- [Astro website](http://astro.build/)
